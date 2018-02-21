@@ -127,7 +127,8 @@ def write_template(ingress, nginx_conf, args):
             underscores_in_headers=args.underscores_in_headers,
             allow_invalid_headers=args.allow_invalid_headers,
             enable_websocket=args.enable_websocket,
-            client_max_body_size=args.client_max_body_size)
+            client_max_body_size=args.client_max_body_size,
+            cors_policy=args.cors_policy)
 
     # Save nginx conf
     try:
@@ -518,6 +519,13 @@ config file.'''.format(
     --rewrite "/apis/shelves\\\\?id=(.*)&key=(.*) /shelves/\$1?key=\$2"
     --rewrite "^/api/v1/view/(.*) /view/\$1"
     ''')
+
+    parser.add_argument('--cors_policy', default=None, help='''
+        By default, cors_policy is None, which means the backend handles CORS
+        requests itself. If cors_policy is "cors_wide_open", the CORS requests
+        are handled by the wide open CORS policy defined in the Nginx template
+        configuration file.
+        ''')
 
     # Specify a custom service.json path.
     # If this is specified, service json will not be fetched.

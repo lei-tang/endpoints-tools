@@ -39,7 +39,9 @@ from collections import Counter
 from mako.template import Template
 
 # Location of NGINX binary
-NGINX = "/usr/sbin/nginx"
+# NGINX = "/usr/sbin/nginx"
+NGINX = "/usr/local/google/home/leitang/git/esp/bazel-bin/src/nginx/main/nginx-esp"
+
 
 # Location of NGINX template
 NGINX_CONF_TEMPLATE = "/etc/nginx/nginx-auto.conf.template"
